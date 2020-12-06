@@ -1,9 +1,10 @@
 import { Component } from 'react';
 // 路由
-import {HashRouter,Switch,Route}  from 'react-router-dom';  
+import {BrowserRouter as Router,Switch,Route}  from 'react-router-dom';  
 // 引入组件
-import Home from './views/home';
-import About from './views/about'
+import Login from './views/login/index';
+import About from './views/about';
+import './App.scss';
 class App extends Component{
   constructor(){
     super();
@@ -11,12 +12,15 @@ class App extends Component{
   }
   render(){
     return(
-      <HashRouter>
-        <Switch>
-          <Route  exact component={Home} path="/"></Route>
-          <Route component={About}  path="/about"></Route>
-        </Switch>
-      </HashRouter>
+      <div className="test">
+        <Router>
+          <Switch>
+            <Route  exact component={Login} path="/"></Route>
+            <Route component={About}  path="/about"></Route>
+          </Switch>
+        </Router>
+      </div>
+      
     )
   }
 }
