@@ -1,0 +1,15 @@
+.layout-side{
+    height: 100vh;
+}
+.layout-header{
+    position: relative;
+    background-color: #ffffff;
+    @include webkit(box-shadow,0 3px 16px 0 rgba(0,0,0,.1));
+    height: 75px;
+
+}
+.layout-main{
+    border: 30px solid #f7f7f7;
+    background: #ffffff;
+    padding: 30px;
+}
