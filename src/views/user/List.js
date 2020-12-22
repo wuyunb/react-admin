@@ -1,7 +1,7 @@
 import { Component } from 'react';
 // 路由
 
-class User extends Component{
+class UserList extends Component{
   constructor(){
     super();
     this.state = {};
@@ -16,4 +16,4 @@ class User extends Component{
   }
 }
 
-export default User;
+export default UserList;

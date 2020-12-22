@@ -1,6 +1,6 @@
 import React,{Component,Fragment} from 'react';
 import  Router from '../../router/index';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
 import { Menu } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
 
@@ -9,9 +9,29 @@ const { SubMenu } = Menu;
 class AsiderMneu extends Component{
     constructor(){
         super();
-        this.state = {};
-        console.log(Router)
+        this.state = {
+            selectedKeys:[],
+            openKeys:['/index/user'],
+
+        };
     }
+    // 组件挂载之前
+    UNSAFE_componentWillMount (){
+        let pathname = this.props.location.pathname;
+        let openks = pathname.split('/').slice(0,3).join('/');
+        this.setState({
+            selectedKeys: [pathname],
+            openKeys:[openks]
+        })
+    }
+    // 选择菜单
+    selectMenu = ({key, keyPath})=>{
+        this.setState({
+            selectedKeys: [key],
+            openKeys:[keyPath[keyPath.length-1]]
+        })
+    }
+
     // 无级菜单
     renderMenu = ({key,title}) => {
         return(
@@ -29,17 +49,18 @@ class AsiderMneu extends Component{
         </SubMenu>
     }
     render(){
+        const {selectedKeys,openKeys} = this.state
         return (
             <Fragment>
                 <Menu
                     mode="inline"
                     theme="dark"
-                    defaultSelectedKeys={['1']}
-                    defaultOpenKeys={['sub1']}
+                    onClick={this.selectMenu}
+                    defaultSelectedKeys={selectedKeys}
+                    defaultOpenKeys={openKeys}
                     style={{borderRight: 0 }}
                     >
                         {
-
                             Router && Router.map(firstItem => {
                                 return firstItem.child && firstItem.child.length > 0 ? this.renderSubMenu(firstItem) : this.renderMenu(firstItem)
                             })
@@ -50,4 +71,4 @@ class AsiderMneu extends Component{
     }
 }
 
-export default AsiderMneu
+export default withRouter(AsiderMneu)

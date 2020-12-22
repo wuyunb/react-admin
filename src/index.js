@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import axios from './utils/request';
-import api from './config/api';
+import axios from '@/utils/request';
+import api from '@/config/api';
 // 挂载axios
 React.Component.prototype.$http = axios
 React.Component.prototype.api = api

@@ -13,3 +13,20 @@ body{
 .code{
     width: 104px;
 }
+.inline-button{
+    button + button{
+        margin-left: 10px;
+    }
+}
+.table-wrap{
+    margin-top: 20px;
+}
+.conten-center{
+    text-align: center;
+}
+.pull-right{
+    float: right;
+}
+.spacing-30{
+    margin-top: 30px;
+}
