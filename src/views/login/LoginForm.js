@@ -62,7 +62,6 @@ class LoginForm extends Component {
         })
     }
     codeChange = (e)=>{
-        console.log(e)
         this.setState({
             code:e.target.value
         })

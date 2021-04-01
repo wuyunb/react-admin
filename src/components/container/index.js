@@ -20,5 +20,6 @@ files.keys().map((item) => {
   jsonObj.path = path;
   jsonObj.component = component;
   components.push(jsonObj)
+  return '';
 })
 export default components

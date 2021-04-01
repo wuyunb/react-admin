@@ -30,6 +30,11 @@ class TableData extends Component{
             }
         }
     }
+    componentDidMount(){
+        this.loadData()
+        // 返回子组建的实例
+        this.props.onRef(this)
+    }
     // 搜索
     onSerch =(value) =>{
         this.setState({
@@ -42,27 +47,27 @@ class TableData extends Component{
         // this.loadData()
     }
     // 列表数据
-    // loadData = () =>{
-    //     this.setState({loadingTab:true})
-    //     const {requData,pageNumber,pageSize} = this.state
-    //     const requDatas = {
-    //         ...requData,
-    //         pageNumber,
-    //         pageSize
-    //     }
-    //     // if (keyWork) requData.name = keyWork
-    //     this.$http({
-    //         url:this.props.tableCofig.url,
-    //         method:this.props.tableCofig.method || 'post',
-    //         data:requDatas
-    //     }).then(res=>{
-    //         this.setState({
-    //             data:res.data.data,
-    //             total:res.data.total,
-    //             loadingTab:false
-    //         })
-    //     }).catch(error=>{this.setState({loadingTab:false})})
-    // }
+    loadData = () =>{
+        this.setState({loadingTab:true})
+        const {requData,pageNumber,pageSize} = this.state
+        const requDatas = {
+            ...requData,
+            pageNumber,
+            pageSize
+        }
+        // if (keyWork) requData.name = keyWork
+        this.$http({
+            url:this.props.tableCofig.url,
+            method:this.props.tableCofig.method || 'post',
+            data:requDatas
+        }).then(res=>{
+            this.setState({
+                data:res.data.data,
+                total:res.data.total,
+                loadingTab:false
+            })
+        }).catch(error=>{this.setState({loadingTab:false})})
+    }
     // 复选框数据
     onCheckbox =(value)=>{
         this.setState({

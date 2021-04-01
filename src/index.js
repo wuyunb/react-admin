@@ -5,10 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from '@/utils/request';
 import api from '@/config/api';
+import Store from './store/index'
 // 挂载axios
 React.Component.prototype.$http = axios
 React.Component.prototype.api = api
-
+// store
+React.Component.prototype.store = Store.getState()
 ReactDOM.render(
   // <React.StrictMode>
     <App />,

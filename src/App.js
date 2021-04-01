@@ -6,7 +6,13 @@ import Login from './views/login/index';
 import Index from './views/index/Index'
 import './App.scss';
 // 私有组建
-import PrivateRouter from './components/privateRouter';
+import PrivateRouter from '@c/privateRouter';
+// provider
+import {Provider} from 'react-redux';
+
+// store
+
+import Store from '@/store/index';
 class App extends Component{
   constructor(){
     super();
@@ -14,14 +20,15 @@ class App extends Component{
   }
   render(){
     return(
-      <div className="test">
-        <Router>
+      <Provider store={Store}>
+         <Router>
           <Switch>
             <Route  exact component={Login} path="/"></Route>
             <PrivateRouter component={Index} path='/index'></PrivateRouter>
           </Switch>
         </Router>
-      </div>
+      </Provider>
+       
       
     )
   }

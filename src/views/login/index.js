@@ -13,7 +13,6 @@ class Login extends Component{
         }
     }
     switchForm = (value)=>{
-        console.log(value)
         this.setState({
             formType:value
         })

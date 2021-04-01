@@ -1,3 +1,4 @@
+```
 |-- react
     |-- .DS_Store
     |-- .env.development
@@ -6,9 +7,11 @@
     |-- .eslintcache
     |-- .gitignore
     |-- README.md
+    |-- directoryList.md
     |-- package-lock.json
     |-- package.json
-    |-- config
+    |-- tree.md
+    |-- config                                              // webpack 配置
     |   |-- env.js
     |   |-- getHttpsConfig.js
     |   |-- modules.js
@@ -41,16 +44,21 @@
         |-- reportWebVitals.js
         |-- setupProxy.js
         |-- setupTests.js
-        |-- components
-        |   |-- asiderMneu
+        |-- components                                                // 组建
+        |   |-- asiderMneu                                            // 菜单
         |   |   |-- index.js
-        |   |-- code
+        |   |-- code                                                  //  验证码
         |   |   |-- index.js
-        |   |-- container
+        |   |-- container                                             //  路由组建
         |   |   |-- compoents.js
         |   |   |-- index.js
-        |   |-- privateRouter
+        |   |-- form                                                  //  form组建
+        |   |   |-- Index.js
+        |   |-- privateRouter                                         //  私有化组建
+        |   |   |-- index.js
+        |   |-- tableData
         |       |-- index.js
+        |       |-- table.js
         |-- config
         |   |-- api.js
         |-- router
@@ -82,3 +90,6 @@
             |-- user
                 |-- Add.js
                 |-- List.js
+
+
+```
