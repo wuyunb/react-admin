@@ -5,14 +5,15 @@ import {createStore,combineReducers} from 'redux';    // 创建 store
 import configReducer from "./reducer/Config";
 import departmentReducer from "./reducer/Department";
 import jobReducer from "./reducer/Job";
-
+import app from './reducer/app';
 
 // 创建 Reducer对象
 
 const allReducer = {
     config:configReducer,
     department:departmentReducer,
-    job:jobReducer
+    job:jobReducer,
+    app, 
 }
 const rootReducer = combineReducers(allReducer)
 

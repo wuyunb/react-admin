@@ -1,14 +1,13 @@
-
+import { addDepartmentList } from '../Type';
 const stateData = {
     departmentList:[]
 }
 const DepartmentReducer = function(state=stateData,action) {
-  console.log(action)
     switch (action.type) {
-        case 'GET_DEPARTMENT_LIST': {
+        case addDepartmentList: {
             return {
                 ...state,
-                departmentList:action.payload
+                departmentList:action.data
             }
         }
     

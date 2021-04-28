@@ -34,7 +34,8 @@ class table extends Component {
         const {thead} =this.props.tableCofig;
         return (
             <Fragment>
-                <Table pagination={false}    bordered className="table-wrap"  columns={thead} dataSource={this.props.list}></Table>
+              
+                <Table pagination={false}  rowKey="id"  bordered className="table-wrap"  columns={thead} dataSource={this.props.list} ></Table>
                 {/* <Row className="spacing-30">
                         <Col span={8}>
                            {
@@ -80,13 +81,14 @@ table.defaultProps = {
     // dataSource:[],
     // loading:false,
     // batchButton:false
-    propTypes:{}
+    tableCofig:{}
 }
 
 // 把store中的数据映射到这个组建变成props
 const mapStateToProps = (state) =>{  // mapState 会将数据映射到 this.props
+  console.log('sdfsdfsfsdf',state.department.departmentList.data)
     return{
-        list:state.department.departmentList.data && state.department.departmentList.data.data
+        list:state.department.departmentList.data 
     }
 }
 export default connect(

@@ -4,6 +4,10 @@ import propTypes from 'prop-types';
 import { Form, Input, Radio,Select,Button } from 'antd';
 //connect
 import { connect } from "react-redux";
+
+import { addDepartment } from '@/store/action/Department.js';
+
+import {bindActionCreators} from 'redux';
 // 获取列表数据
 import {TableList} from "@/config/common.js";
 const {TextArea} = Input;
@@ -121,17 +125,38 @@ class FormSerch extends Component {
     }
     // 搜索
     onSubmit = (value) => {
+      console.log(123123,value)
         const searchData = {}
         for (let key in value) {
             if (value[key]!== undefined && value[key] !== "") {
                 searchData[key] = value[key]
             }
         }
-        this.props.search({
-            url:this.api.departmentList,
+        console.log(12312312,this.props)
+        this.search({
+            url:this.props.formConfig.url,
             searchData
         })
     }
+    search = (params)=>{
+      const requestData = {
+          url:params.url,
+          data:{
+              pageNumber:1,
+              pageSize:10
+          }
+      }
+      if (Object.keys(params.searchData).length !== 0) {
+          for (let key in params.searchData) {
+              requestData.data[key] = params.searchData[key]
+          }
+      }
+      TableList(requestData).then(response =>{
+          this.props.listData(response)
+      }).catch(error=>{
+
+      })
+  }
    
     render() {
         const {formLayout} = this.props.formConfig
@@ -156,30 +181,8 @@ const mapStateToProps = (state) => (
 )
 const mapDispatchToprops = (dispatch) =>{
     return {
-        search:(params)=>{
-            const requestData = {
-                url:params.url,
-                data:{
-                    pageNumber:1,
-                    pageSize:10
-                }
-            }
-            if (Object.keys(params.searchData).length !== 0) {
-                for (let key in params.searchData) {
-                    requestData.data[key] = params.searchData[key]
-                }
-            }
-            TableList(requestData).then(response =>{
-                dispatch({
-                    type:'GET_DEPARTMENT_LIST',
-                    payload:{
-                        data:response.data
-                    }
-                })
-            }).catch(error=>{
-
-            })
-        }
+      listData: bindActionCreators(addDepartment,dispatch)
+                // bindActionCreators
     }
 }
 export default connect(

@@ -13,6 +13,7 @@ class DepartmentList extends Component{
             id:'',
             // 筛选form
             formConfig:{
+                url:this.api.departmentList,
                 formItem:[
                     { 
                         type: 'Input',
