@@ -15,7 +15,7 @@ class TableData extends Component{
             //页码
             total:0,
             confirmLoading:false,
-            isModalVisible:false
+            isModalVisible:false,
         }
     }
     componentDidMount(){
@@ -31,7 +31,7 @@ class TableData extends Component{
             pageNumber,
             pageSize
         }
-        if (keyWork) requData.name = keyWork
+        if (this.props.keyWork) requData.name = this.props.keyWork
         this.$http({
             url:this.props.tableCofig.url,
             method:this.props.tableCofig.method || 'post',
