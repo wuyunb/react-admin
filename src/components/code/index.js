@@ -41,7 +41,7 @@ class Code extends Component{
         })
         this.$http({
             method:'post',
-            url:'/getSms/',
+            url:this.api.codeSms,
             data:{
                 username,
                 module:this.state.type,

@@ -3,9 +3,10 @@ import { Component } from 'react';
 import {BrowserRouter as Router,Switch,Route}  from 'react-router-dom';  
 // 引入组件
 import Login from './views/login/index';
-import About from './views/about';
 import Index from './views/index/Index'
 import './App.scss';
+// 私有组建
+import PrivateRouter from './components/privateRouter';
 class App extends Component{
   constructor(){
     super();
@@ -17,8 +18,7 @@ class App extends Component{
         <Router>
           <Switch>
             <Route  exact component={Login} path="/"></Route>
-            <Route component={About}  path="/about"></Route>
-            <Route component={Index} path='/index'></Route>
+            <PrivateRouter component={Index} path='/index'></PrivateRouter>
           </Switch>
         </Router>
       </div>

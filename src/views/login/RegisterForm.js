@@ -28,7 +28,7 @@ class RegisterForm extends Component {
         })
         this.$http({
             method:'post',
-            url:'/register/',
+            url:this.api.register,
             data:{
                 username,
                 password: CryptoJs.MD5(password).toString(),    // 密码加密

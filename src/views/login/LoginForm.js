@@ -1,4 +1,9 @@
 import { Component } from 'react';
+// 路由白名单
+import {withRouter} from 'react-router-dom';
+// session
+// import {setToken} from '../../utils/session';
+import {setToken,setUserName} from '../../utils/cookie';
 
 // andt
 import { Form, Input, Row, Col,Button,message } from 'antd';
@@ -7,7 +12,8 @@ import {validate_email,validate_password} from '../../utils/validate';
 // 加密
 import CryptoJs from 'crypto-js';
 // 加载组建
-import Code from '../../components/code'
+import Code from '../../components/code';
+
 class LoginForm extends Component {
     constructor(props) {
         super();
@@ -26,7 +32,7 @@ class LoginForm extends Component {
         })
         this.$http({
             method: 'post',
-            url: '/login/',
+            url: this.api.login,
             data: {
                 username:this.state.username,
                 password: CryptoJs.MD5(this.state.password).toString(),
@@ -38,7 +44,15 @@ class LoginForm extends Component {
             })
             if (res.resCode === 0) {
                 message.success(res.message)
+                setToken(res.data.token)
+                setUserName(res.data.username)
+                this.props.history.push('/index')
+                
             }
+        }).catch(error=>{
+            this.setState({
+                loading:false
+            } )
         })
     }
     // 邮箱输入
@@ -131,4 +145,4 @@ class LoginForm extends Component {
         )
     }
 }
-export default LoginForm 
+export default withRouter(LoginForm)  
