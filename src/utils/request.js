@@ -10,7 +10,6 @@ const service = axios.create({
 
   // 请求拦截器
   service.interceptors.request.use(function (config) {
-    console.log(12312323,getUserName())
     config.headers["Token"] = getToken()
     config.headers["Username"] = getUserName()
     // 在发送请求之前做些什么
@@ -22,7 +21,6 @@ const service = axios.create({
 
 // 响应拦截器
 service.interceptors.response.use(function (response) {
-    console.log(response)
     const  data = response.data
     if (data.resCode !== 0) {     // 全局错误拦截
       message.error(data.message);

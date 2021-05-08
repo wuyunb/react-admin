@@ -17,8 +17,6 @@ class TableData extends Component{
             total:0,
             confirmLoading:false,
             isModalVisible:false,
-<<<<<<< HEAD
-=======
             requData:'',
             formConfig:{
                 formItem:[
@@ -30,8 +28,12 @@ class TableData extends Component{
                     },
                 ]
             }
->>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
         }
+    }
+    componentDidMount(){
+        this.loadData()
+        // 返回子组建的实例
+        this.props.onRef(this)
     }
     // 搜索
     onSerch =(value) =>{
@@ -45,19 +47,19 @@ class TableData extends Component{
         // this.loadData()
     }
     // 列表数据
-<<<<<<< HEAD
     loadData = () =>{
         this.setState({loadingTab:true})
-        const {pageNumber,pageSize} = this.state
-        const requData = {
+        const {requData,pageNumber,pageSize} = this.state
+        const requDatas = {
+            ...requData,
             pageNumber,
             pageSize
         }
-        if (this.props.keyWork) requData.name = this.props.keyWork
+        // if (keyWork) requData.name = keyWork
         this.$http({
             url:this.props.tableCofig.url,
             method:this.props.tableCofig.method || 'post',
-            data:requData
+            data:requDatas
         }).then(res=>{
             this.setState({
                 data:res.data.data,
@@ -66,29 +68,6 @@ class TableData extends Component{
             })
         }).catch(error=>{this.setState({loadingTab:false})})
     }
-=======
-    // loadData = () =>{
-    //     this.setState({loadingTab:true})
-    //     const {requData,pageNumber,pageSize} = this.state
-    //     const requDatas = {
-    //         ...requData,
-    //         pageNumber,
-    //         pageSize
-    //     }
-    //     // if (keyWork) requData.name = keyWork
-    //     this.$http({
-    //         url:this.props.tableCofig.url,
-    //         method:this.props.tableCofig.method || 'post',
-    //         data:requDatas
-    //     }).then(res=>{
-    //         this.setState({
-    //             data:res.data.data,
-    //             total:res.data.total,
-    //             loadingTab:false
-    //         })
-    //     }).catch(error=>{this.setState({loadingTab:false})})
-    // }
->>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
     // 复选框数据
     onCheckbox =(value)=>{
         this.setState({
@@ -168,30 +147,6 @@ class TableData extends Component{
         }
        return (
            <Fragment>
-<<<<<<< HEAD
-               <Table pagination={false}   loading={this.state.loadingTab} className="table-wrap" rowKey="id" rowSelection={  checkbox ? rowSelection : null  } columns={columns} dataSource={this.state.data} bordered></Table>
-               <Row className="spacing-30">
-                    <Col span={8}>
-                       {
-                         this.props.batchButton &&  <Button  onClick={()=>this.onHadnlerDelete()}>批量删除</Button>
-                       }
-                    </Col>
-                    <Col span={16}>
-                        <Pagination
-                            onChange={this.onchangeCurrnePage}
-                            onShowSizeChange = {this.pageSizeChange}
-
-                            defaultCurrent='1'
-                            className="pull-right"
-                            total={this.state.total}
-                            showSizeChanger
-                            showQuickJumper
-                            showTotal={total => `Total ${total} items`}
-                           
-                        />
-                    </Col>
-                </Row> 
-=======
                <FormSerch formConfig={this.state.formConfig} onSubmit={this.onSerch}></FormSerch>
                <TableBasis 
                 thead={thead}  
@@ -208,7 +163,6 @@ class TableData extends Component{
                 />
                {/* <Table pagination={false}   loading={this.state.loadingTab} className="table-wrap" rowKey="id" rowSelection={    } columns={columns} dataSource={this.state.data} bordered></Table> */}
                
->>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
                 <Modal title="提示" okText='确认' cancelText="取消" confirmLoading={this.state.confirmLoading} visible={this.state.isModalVisible} onOk={this.handleOk} onCancel={()=>{
                     this.setState({
                         isModalVisible:false

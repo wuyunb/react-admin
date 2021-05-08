@@ -13,6 +13,10 @@ import {validate_email,validate_password} from '../../utils/validate';
 import CryptoJs from 'crypto-js';
 // 加载组建
 import Code from '../../components/code';
+// store
+import { connect } from "react-redux";
+import { bindActionCreators } from 'redux';
+import {setTokenAction ,setUsernameAction }  from '@/store/action/app.js'
 
 class LoginForm extends Component {
     constructor(props) {
@@ -44,6 +48,8 @@ class LoginForm extends Component {
             })
             if (res.resCode === 0) {
                 message.success(res.message)
+                this.props.actions.setToken(res.data.token)
+                this.props.actions.setUserName(res.data.username)
                 setToken(res.data.token)
                 setUserName(res.data.username)
                 this.props.history.push('/index')
@@ -62,7 +68,6 @@ class LoginForm extends Component {
         })
     }
     codeChange = (e)=>{
-        console.log(e)
         this.setState({
             code:e.target.value
         })
@@ -145,4 +150,16 @@ class LoginForm extends Component {
         )
     }
 }
-export default withRouter(LoginForm)  
+const mapDispatchToprops =  (dispatch) =>{
+  return {
+    actions:bindActionCreators({
+      setToken:setTokenAction,
+      setUserName:setUsernameAction
+    },dispatch)
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToprops,
+)(withRouter(LoginForm)) 

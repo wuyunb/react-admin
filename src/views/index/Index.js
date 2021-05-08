@@ -3,7 +3,8 @@ import React,{Component} from 'react';
 import './layout.scss';
 // layout组建 
 import Aside from './component/Aside';
-import ContainerMain  from '../../components/container/compoents';
+// 导入组建
+import ContainerMain  from '@c/container/compoents';
 import {MenuFoldOutlined,MenuUnfoldOutlined } from '@ant-design/icons';
 
 // andt

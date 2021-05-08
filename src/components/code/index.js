@@ -15,6 +15,7 @@ class Code extends Component{
             type:''
         }
     }
+    // 监听 props  
     componentWillReceiveProps({username,type}){
         this.setState({
             username,

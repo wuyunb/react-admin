@@ -13,7 +13,11 @@ export function validate_email(val) {
 export function validate_pas(val){
     return reg_password.test(val)
 }
+<<<<<<< HEAD
 // 数字验证
+=======
+
+>>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
 export function validate_num(val) {
     return reg_number.test(val)
 }

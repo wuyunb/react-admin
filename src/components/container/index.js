@@ -19,8 +19,15 @@ files && files.keys().map((item) => {
     //   写入对象
   jsonObj.path = path;
   jsonObj.component = component;
+<<<<<<< HEAD
 
   components.push(jsonObj)
   return ''
+=======
+  
+  components.push(jsonObj)
+  return '';
+>>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
 })
+console.log(1243256754321343543,components)
 export default components

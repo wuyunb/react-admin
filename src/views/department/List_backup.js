@@ -1,35 +1,14 @@
 import React,{Component,Fragment} from 'react';
 import {Button,Switch, message} from 'antd';
 import {Link} from 'react-router-dom';
-// table 组件
 import TableData from '@c/tableData/table.js';
-
-// search组建
-import FormSearch from '@c/formSerch/index.js'
 class DepartmentList extends Component{
     constructor(){
         super();
         this.state = {
+            keyWork:'',   // 部门名称-搜索
             id:'',
-            // 筛选form
-            formConfig:{
-                url:this.api.departmentList,
-                formItem:[
-                    { 
-                        type: 'Input',
-                        label: "部门名称", 
-                        name: "name", 
-                        placeholder:"请输入部门名称"
-                    },
-                    { 
-                        type: 'Select',
-                        label: "禁/启用", 
-                        name: "status", 
-                        placeholder:"请选择"
-                    },
-                ]
-            },
-            // 表格 组建传参
+            // 子组建传参
             tableCofig:{
                 url:this.api.departmentList,// url
                 checkbox:true,  // 复选框
@@ -68,15 +47,6 @@ class DepartmentList extends Component{
         }
     }
     // 搜索
-<<<<<<< HEAD
-    onFinish = (valus)=>{
-        this.setState({
-            keyWork:valus.username,
-            pageNumber:1,
-            pageSize:10,
-        })
-        this.tableComponent.loadData()
-=======
     // onFinish = (valus)=>{
     //     this.setState({
     //         keyWork:valus.username,
@@ -85,7 +55,6 @@ class DepartmentList extends Component{
     //     })
     //     console.log(12312312,this.tableComponent)
     // //    this.loadData()
->>>>>>> 7b19cc583112e82e2453c2f20910da7ad0f1196d
         
     // }
     // 禁启用
@@ -118,27 +87,25 @@ class DepartmentList extends Component{
     2、通过实例调用子组建的方法
     */ 
    getChildRef = (ref) => {
-     console.log(ref)
      this.tableComponent = ref // 存储子组建
-    //  console.log('ref',ref)
-   }
-   getSerchChildRef = ref =>{
-     this.serch = ref
-    console.error(ref)
    }
     //  删除
     delete = (id)=>{
-      // console.log(123123,id)
-      console.log('fsdfsd',this.serch)
-      return
-    //  this.tableComponent.onHadnlerDelete(id)
+     this.tableComponent.onHadnlerDelete(id)
    }
     render(){
         return (
             <Fragment>
-                <FormSearch  onRef={this.getSerchChildRef} formConfig={this.state.formConfig}/>
+                {/* <Form layout="inline" onFinish={this.onFinish}>
+                    <Form.Item label="部门名称" name="username">
+                        <Input placeholder="请输入部门名称"/>
+                    </Form.Item>
+                    <Form.Item >
+                        <Button type="primary" htmlType="submit">搜索</Button>
+                    </Form.Item> 
+                </Form> */}
                 {/* 表格 */}
-                <TableData  onRef={this.getChildRef} batchButton={true} keyWork={this.state.keyWork} tableCofig={this.state.tableCofig}/>
+                <TableData  onRef={this.getChildRef} batchButton={true} tableCofig={this.state.tableCofig}/>
                 {/* <Table  className="table-wrap" rowKey="id" rowSelection={rowSelection} columns={columns} dataSource={data} bordered></Table> */}
                 
             </Fragment>

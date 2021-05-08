@@ -53,6 +53,11 @@ const router = [
       title: '加班',
       icon: 'info-circle-o',
       key: '/home/abouta'
+    },
+    {
+      title: '表单',
+      icon: 'info-circle-o',
+      key: '/form'
     }
   ]
 
