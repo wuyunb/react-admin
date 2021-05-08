@@ -15,7 +15,7 @@ class TableData extends Component{
             //页码
             total:0,
             confirmLoading:false,
-            isModalVisible:false
+            isModalVisible:false,
         }
     }
     componentDidMount(){
@@ -26,12 +26,12 @@ class TableData extends Component{
     // 列表数据
     loadData = () =>{
         this.setState({loadingTab:true})
-        const {keyWork,pageNumber,pageSize} = this.state
+        const {pageNumber,pageSize} = this.state
         const requData = {
             pageNumber,
             pageSize
         }
-        if (keyWork) requData.name = keyWork
+        if (this.props.keyWork) requData.name = this.props.keyWork
         this.$http({
             url:this.props.tableCofig.url,
             method:this.props.tableCofig.method || 'post',
@@ -135,6 +135,7 @@ class TableData extends Component{
                         <Pagination
                             onChange={this.onchangeCurrnePage}
                             onShowSizeChange = {this.pageSizeChange}
+
                             defaultCurrent='1'
                             className="pull-right"
                             total={this.state.total}

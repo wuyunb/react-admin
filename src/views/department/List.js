@@ -52,7 +52,7 @@ class DepartmentList extends Component{
             pageNumber:1,
             pageSize:10,
         })
-    //    this.loadData()
+        this.tableComponent.loadData()
         
     }
     // 禁启用
@@ -104,7 +104,7 @@ class DepartmentList extends Component{
                     </Form.Item> 
                 </Form>
                 {/* 表格 */}
-                <TableData  onRef={this.getChildRef} batchButton={true} tableCofig={this.state.tableCofig}/>
+                <TableData  onRef={this.getChildRef} batchButton={true} keyWork={this.state.keyWork} tableCofig={this.state.tableCofig}/>
                 {/* <Table  className="table-wrap" rowKey="id" rowSelection={rowSelection} columns={columns} dataSource={data} bordered></Table> */}
                 
             </Fragment>
