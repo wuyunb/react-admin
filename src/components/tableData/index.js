@@ -26,7 +26,7 @@ class TableData extends Component{
     // 列表数据
     loadData = () =>{
         this.setState({loadingTab:true})
-        const {keyWork,pageNumber,pageSize} = this.state
+        const {pageNumber,pageSize} = this.state
         const requData = {
             pageNumber,
             pageSize
@@ -135,6 +135,7 @@ class TableData extends Component{
                         <Pagination
                             onChange={this.onchangeCurrnePage}
                             onShowSizeChange = {this.pageSizeChange}
+
                             defaultCurrent='1'
                             className="pull-right"
                             total={this.state.total}
